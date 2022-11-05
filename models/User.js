@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const thoughtSchema = require('./Thought');
 
 // Function for validating a user's email address using valid email regex
 let emailValidation = function(email) {
@@ -30,7 +31,7 @@ const userSchema = new Schema(
     ],
     friends: [
       {
-        type: Schema.model.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
       },
     ],
@@ -51,6 +52,6 @@ userSchema
     return this.friends.length;
   });
 
-  const User = model('User', userSchema);
+const User = model('User', userSchema);
 
-  module.exports = User;
+module.exports = User;
