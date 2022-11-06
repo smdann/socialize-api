@@ -21,7 +21,19 @@ module.exports = {
   // CREATE a thought
   createThought(req, res) {
     Thought.create(req.body)
-      .then((newThought) => res.json(newThought))
+      .then((newThought) => {
+        console.log(newThought)
+        return User.findOneAndUpdate(
+          {_id: req.body.userId},
+          {$push:{thoughts: newThought._id}},
+          {new: true}
+        )})
+      .then(
+        (data) =>{
+
+          res.json(data)
+        }
+      )
       .catch((err) => res.status(500).json(err));
   },
   // UPDATE a thought
@@ -60,7 +72,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Delete a reaction
+  // DELETE a reaction
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },

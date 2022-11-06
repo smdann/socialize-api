@@ -4,7 +4,7 @@ const { User, Thought, Reaction } = require('../models');
 module.exports = {
   // GET all of the users
   getAllUsers(req, res) {
-    User.find()
+    User.find().populate({path: 'thoughts'})
       .then((allUsers) => res.json(allUsers))
       .catch((err) => res.status(500).json(err));
   },
@@ -43,7 +43,7 @@ module.exports = {
       .then((deleteUser) => 
         !deleteUser 
           ? res.status(404).json({ message: 'Sorry, no user returned with that ID!'})
-          : Application.deleteMany({ _id: { $in: User.thoughts } })
+          : Thought.deleteMany({ _id: { $in: User.thoughts } })
       )
       .then(() => res.json({ message: 'The user and their thoughts have been deleted.'}))
       .catch((err) => res.status(500).json(err));
