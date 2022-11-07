@@ -18,8 +18,17 @@ const reactionSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now, // need getter to format date
+      default: Date.now,
+      get: (date) => {
+        if (date) return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()} `;
+      },
     },
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+    id: false,
   }
 );
 
