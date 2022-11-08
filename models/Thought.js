@@ -1,5 +1,36 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
+
+// Reaction schema
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (date) => {
+        if (date) return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()} `;
+      },
+    },
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+    id: false,
+  }
+);
 
 // Thought schema to create the Thought model
 const thoughtSchema = new Schema(

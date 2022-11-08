@@ -11,6 +11,8 @@ app.use(routes);
 
 db.once('open', () => {
   app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
+    console.log(`===================================================`);
+    console.log(`\n The Socialize API server is running on port ${PORT}! \n`);
+    console.log(`===================================================`);
   });
 });

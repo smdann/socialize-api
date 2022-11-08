@@ -54,11 +54,13 @@ In the same way as GET routes for the user, all thoughts and single thougts are 
 
 * A POST route for creating a thought requires the input of the user ID, username, and thought text. The thought is added to the user's thoughts list.
 
-* The tought text can be edited in the PUT route for updating a thought, while the thought ID is passed into the URL parameters.
+* The tought text can be edited in the PUT route for updating a thought, with the thought ID getting passed into the URL parameters.
 
 * Thoughts can be deleted by passing the thought ID into the URL parameters of the DELETE route.
 
 To create a reaction to a thought, the thought ID is passed into the URL paramters and a reaction body and username are supplied. The reaction is added to the list of reactions within a thought.
+
+* Formatted JSON data for reactions includes the user's ID, reaction body, username, reaction ID, and the date created.
 
 To delete a reaction, the thought ID and reaction ID are passed into the URL parameters. This removes the reaction from the list of reactions within a thought.
 
