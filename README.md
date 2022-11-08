@@ -64,9 +64,9 @@ To create a reaction to a thought, the thought ID is passed into the URL paramte
 
 To delete a reaction, the thought ID and reaction ID are passed into the URL parameters. This removes the reaction from the list of reactions within a thought.
 
-[Walkthrough Video]()
+[Walkthrough Video](https://drive.google.com/file/d/1aXmvgnyq1UdQCDToEP7sNi3yuqU238BY/view)
 
-![Socialize API Insomnia Screenshot]()
+![Socialize API Insomnia Screenshot](./assets/insomnia-screenshot.png)
 
 ## License 
 
