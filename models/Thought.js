@@ -12,7 +12,7 @@ const thoughtSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now, // need getter to format date
+      default: Date.now, 
       get: (date) => {
         if (date) return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()} `;
       },
@@ -22,7 +22,7 @@ const thoughtSchema = new Schema(
       required: true,
     },
     // Array of nested documents created with reactionSchema
-    reactions: [], 
+    reactions: [reactionSchema], 
   },
   {
     toJSON: {

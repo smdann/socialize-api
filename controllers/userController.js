@@ -48,7 +48,7 @@ module.exports = {
       .then(() => res.json({ message: 'The user and their thoughts have been deleted.'}))
       .catch((err) => res.status(500).json(err));
   },
-  // UPDATE a user - add a friend
+  // CREATE a friend
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -62,7 +62,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // UPDATE a user - delete a friend
+  // DELETE a friend
   deleteFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },

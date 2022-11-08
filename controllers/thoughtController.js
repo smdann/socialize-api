@@ -21,7 +21,7 @@ module.exports = {
   // CREATE a thought
   createThought(req, res) {
     Thought.create(req.body)
-      .then(({_id}) => {
+      .then(({ _id }) => {
         //console.log(newThought)
         return User.findOneAndUpdate(
           { _id: req.body.userId },
@@ -58,11 +58,12 @@ module.exports = {
   createReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $addToSet: { reactions: req.body } }
+      { $addToSet: { reactions: req.body } },
+      { new: true },
     ) 
       .then((createReaction) => 
         !createReaction
-          ? res.status(404).json({ message: 'Sorry, no reaction returned with that ID!'})
+          ? res.status(404).json({ message: 'Sorry, a thought with that ID does not exist!'})
           : res.json(createReaction)
       )
       .catch((err) => res.status(500).json(err));
